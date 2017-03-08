@@ -1,0 +1,35 @@
+{
+  "articles": [],
+  "carts": [
+    {
+      "id": 1,
+      "items": [
+        { "article_id": 1, "quantity": 6 }               
+      ]
+    },
+    {
+      "id": 2,
+      "items": [
+        { "article_id": 2, "quantity": 2 }        
+      ]
+    },
+    {
+      "id": 3,
+      "items": [
+	    { "article_id": 3, "quantity": 1 }
+	  ]
+    },
+    {
+      "id": 4,
+      "items": [
+	    { "article_id": 4, "quantity": 5 }
+	  ]
+    },
+    {
+      "id": 5,
+      "items": [
+	    { "article_id": 5, "quantity": 7 }
+	  ]
+    }
+  ]
+}

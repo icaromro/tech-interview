@@ -1,0 +1,44 @@
+{
+  "articles": [
+    { "id": 1, "name": "water", "price": 100 },
+    { "id": 2, "name": "honey", "price": 200 },
+    { "id": 6, "name": "bread", "price": 1300 },
+    { "id": 7, "name": "oatmeal", "price": 2500 }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "items": [
+        { "article_id": 1, "quantity": 6 },
+        { "article_id": 2, "quantity": 2 },
+        { "article_id": 4, "quantity": 1 }
+      ]
+    },
+    {
+      "id": 2,
+      "items": [
+        { "article_id": 2, "quantity": 1 },
+        { "article_id": 3, "quantity": 3 }
+      ]
+    },
+    {
+      "id": 3,
+      "items": [
+	    { "article_id": 7, "quantity": 1 },
+        { "article_id": 5, "quantity": 3 }
+	  ]
+    },
+    {
+      "id": 4,
+      "items": [
+	    { "article_id": 1, "quantity": 3 },
+        { "article_id": 2, "quantity": 2 },
+        { "article_id": 3, "quantity": 1 }
+	  ]
+    },
+    {
+      "id": 5,
+      "items": []
+    }
+  ]
+}
