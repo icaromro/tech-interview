@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using backend_solution.Model.level1;
+using backend_solution.Model.level2;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +13,13 @@ namespace backend_solution.Model
     public class Output
     {
         public List<OutputCart> carts { get; set; }
-        
+
+        #region Constructors
+
         public Output(){ }
 
-        public Output(Input input)
-        {
+        public Output(Level1Input input)
+        {            
             this.carts = new List<OutputCart>();
             foreach (InputCart cart in input.carts)
             {
@@ -24,10 +28,39 @@ namespace backend_solution.Model
                 {
                     total += item.quantity * input.FindArticlePrice(item.article_id);
                 }                
+                
+                this.carts.Add(new OutputCart(cart.id, total));
+            }            
+        }
+
+        public Output(Level2Input input)
+        {
+            this.carts = new List<OutputCart>();
+            foreach (InputCart cart in input.carts)
+            {
+                int total = 0;
+
+                foreach (Item item in cart.items)
+                {
+                    total += item.quantity * input.FindArticlePrice(item.article_id);
+                }
+
+                foreach (DeliveryFee deliveryFee in input.delivery_fees)
+                {
+                    EligibleTransactionVolume eligibleTransactionVolume = deliveryFee.eligible_transaction_volume;
+                    if ((eligibleTransactionVolume.min_price <= total || eligibleTransactionVolume.min_price == null) 
+                       && ((eligibleTransactionVolume.max_price == null) || total < eligibleTransactionVolume.max_price))
+                    {
+                        total += deliveryFee.price;
+                        break;
+                    }
+                }
+
                 this.carts.Add(new OutputCart(cart.id, total));
             }
-            
         }
+
+        #endregion
 
         public static Output ReadJsonFile(string filePath)
         {            

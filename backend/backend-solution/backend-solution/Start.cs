@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using backend_solution.Model;
 using Newtonsoft.Json;
+using backend_solution.Model.level1;
+using backend_solution.Model.level2;
 
 namespace backend_solution
 {
@@ -19,10 +21,18 @@ namespace backend_solution
         public Start()
         {
             InitializeComponent();
+            InitializeComboBox();
+        }
+
+        public void InitializeComboBox()
+        {
+            cbbLevelSelection.Items.Insert(0, "Level1");
+            cbbLevelSelection.Items.Insert(1, "Level2");
+            cbbLevelSelection.SelectedIndex = 0;
         }
         #endregion
-
-        #region level1
+        
+        #region Level Resolution
 
         private void btnSelectInputFile_Click(object sender, EventArgs e)
         {            
@@ -35,10 +45,10 @@ namespace backend_solution
             {
                 MessageBox.Show("Please, select a data file.");
                 return;
-            }
-            Input input = Input.ReadJsonFile(txbInputFilePath.Text);
+            }            
 
-            Output output = new Output(input);
+            Output output = ObtainOutput(txbInputFilePath.Text);       
+            
             string outputText = JsonConvert.SerializeObject(output);
 
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -59,7 +69,9 @@ namespace backend_solution
 
         }
 
-        #region Level1 Testing
+        #endregion
+
+        #region Testing
 
         private void btnSelectTestDataFile_Click(object sender, EventArgs e)
         {
@@ -78,10 +90,10 @@ namespace backend_solution
                 MessageBox.Show("Please, select both files before pressing the test button.");
                 return;
             }
-
-            Input inputTest = Input.ReadJsonFile(txbTestDataFilePath.Text);
+                     
+            Output actualOutput = ObtainOutput(txbTestDataFilePath.Text);             
             Output expectedOutput = Output.ReadJsonFile(txbExpectedOutputPath.Text);
-            Output actualOutput = new Output(inputTest);
+            
             if (actualOutput.Compare(expectedOutput))
             {
                 lblResult.ForeColor = Color.Green;
@@ -94,9 +106,7 @@ namespace backend_solution
             }                        
         }
 
-        #endregion
-
-        #endregion
+        #endregion       
 
         private string SelectFile()
         {
@@ -111,6 +121,40 @@ namespace backend_solution
             }
 
             return path;
+        }
+
+        private void cbbLevelSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cbbLevelSelection.SelectedIndex)
+            {
+                case 0:
+                    tabPageResolution.Text = "Level1-Resolution";
+                    tabPageTest.Text = "Level1-Test";
+                    break;
+                case 1:
+                    tabPageResolution.Text = "Level2-Resolution";
+                    tabPageTest.Text = "Level2-Test";
+                    break;
+            }
+        }
+
+        private Output ObtainOutput(string filePath)
+        {
+            int levelSelected = cbbLevelSelection.SelectedIndex;
+            Output output = new Output();
+
+            switch (levelSelected)
+            {
+                case 0:
+                    Level1Input level1Input = Level1Input.ReadJsonFile(filePath);
+                    output = new Output(level1Input);
+                    break;
+                case 1:
+                    Level2Input level2Input = Level2Input.ReadJsonFile(filePath);
+                    output = new Output(level2Input);
+                    break;                                    
+            }
+            return output;
         }
     }
 }

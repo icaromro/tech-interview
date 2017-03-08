@@ -31,18 +31,20 @@
             this.txbInputFilePath = new System.Windows.Forms.TextBox();
             this.btnSelectInputFile = new System.Windows.Forms.Button();
             this.btnGenerateOutput = new System.Windows.Forms.Button();
-            this.tabLevel1 = new System.Windows.Forms.TabControl();
-            this.tabPageLevel1 = new System.Windows.Forms.TabPage();
-            this.tabPageLevel1Test = new System.Windows.Forms.TabPage();
-            this.btnSelectTestDataFile = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.btnSelectExpectedOutput = new System.Windows.Forms.Button();
-            this.txbTestDataFilePath = new System.Windows.Forms.TextBox();
-            this.txbExpectedOutputPath = new System.Windows.Forms.TextBox();
+            this.tabLevelResolution = new System.Windows.Forms.TabControl();
+            this.tabPageResolution = new System.Windows.Forms.TabPage();
+            this.tabPageTest = new System.Windows.Forms.TabPage();
             this.lblResult = new System.Windows.Forms.Label();
-            this.tabLevel1.SuspendLayout();
-            this.tabPageLevel1.SuspendLayout();
-            this.tabPageLevel1Test.SuspendLayout();
+            this.txbExpectedOutputPath = new System.Windows.Forms.TextBox();
+            this.txbTestDataFilePath = new System.Windows.Forms.TextBox();
+            this.btnSelectExpectedOutput = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnSelectTestDataFile = new System.Windows.Forms.Button();
+            this.cbbLevelSelection = new System.Windows.Forms.ComboBox();
+            this.lblSelectLevel = new System.Windows.Forms.Label();
+            this.tabLevelResolution.SuspendLayout();
+            this.tabPageResolution.SuspendLayout();
+            this.tabPageTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // txbInputFilePath
@@ -73,64 +75,68 @@
             this.btnGenerateOutput.UseVisualStyleBackColor = true;
             this.btnGenerateOutput.Click += new System.EventHandler(this.btnGenerateOutput_Click);
             // 
-            // tabLevel1
+            // tabLevelResolution
             // 
-            this.tabLevel1.Controls.Add(this.tabPageLevel1);
-            this.tabLevel1.Controls.Add(this.tabPageLevel1Test);
-            this.tabLevel1.Location = new System.Drawing.Point(0, 13);
-            this.tabLevel1.Name = "tabLevel1";
-            this.tabLevel1.SelectedIndex = 0;
-            this.tabLevel1.Size = new System.Drawing.Size(571, 135);
-            this.tabLevel1.TabIndex = 4;
+            this.tabLevelResolution.Controls.Add(this.tabPageResolution);
+            this.tabLevelResolution.Controls.Add(this.tabPageTest);
+            this.tabLevelResolution.Location = new System.Drawing.Point(0, 31);
+            this.tabLevelResolution.Name = "tabLevelResolution";
+            this.tabLevelResolution.SelectedIndex = 0;
+            this.tabLevelResolution.Size = new System.Drawing.Size(571, 135);
+            this.tabLevelResolution.TabIndex = 4;
             // 
-            // tabPageLevel1
+            // tabPageResolution
             // 
-            this.tabPageLevel1.Controls.Add(this.txbInputFilePath);
-            this.tabPageLevel1.Controls.Add(this.btnGenerateOutput);
-            this.tabPageLevel1.Controls.Add(this.btnSelectInputFile);
-            this.tabPageLevel1.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLevel1.Name = "tabPageLevel1";
-            this.tabPageLevel1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLevel1.Size = new System.Drawing.Size(563, 109);
-            this.tabPageLevel1.TabIndex = 0;
-            this.tabPageLevel1.Text = "Level1";
-            this.tabPageLevel1.UseVisualStyleBackColor = true;
+            this.tabPageResolution.Controls.Add(this.txbInputFilePath);
+            this.tabPageResolution.Controls.Add(this.btnGenerateOutput);
+            this.tabPageResolution.Controls.Add(this.btnSelectInputFile);
+            this.tabPageResolution.Location = new System.Drawing.Point(4, 22);
+            this.tabPageResolution.Name = "tabPageResolution";
+            this.tabPageResolution.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageResolution.Size = new System.Drawing.Size(563, 109);
+            this.tabPageResolution.TabIndex = 0;
+            this.tabPageResolution.Text = "Level1-Resolution";
+            this.tabPageResolution.UseVisualStyleBackColor = true;
             // 
-            // tabPageLevel1Test
+            // tabPageTest
             // 
-            this.tabPageLevel1Test.Controls.Add(this.lblResult);
-            this.tabPageLevel1Test.Controls.Add(this.txbExpectedOutputPath);
-            this.tabPageLevel1Test.Controls.Add(this.txbTestDataFilePath);
-            this.tabPageLevel1Test.Controls.Add(this.btnSelectExpectedOutput);
-            this.tabPageLevel1Test.Controls.Add(this.btnTest);
-            this.tabPageLevel1Test.Controls.Add(this.btnSelectTestDataFile);
-            this.tabPageLevel1Test.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLevel1Test.Name = "tabPageLevel1Test";
-            this.tabPageLevel1Test.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLevel1Test.Size = new System.Drawing.Size(563, 109);
-            this.tabPageLevel1Test.TabIndex = 1;
-            this.tabPageLevel1Test.Text = "Level1-Tests";
-            this.tabPageLevel1Test.UseVisualStyleBackColor = true;
+            this.tabPageTest.Controls.Add(this.lblResult);
+            this.tabPageTest.Controls.Add(this.txbExpectedOutputPath);
+            this.tabPageTest.Controls.Add(this.txbTestDataFilePath);
+            this.tabPageTest.Controls.Add(this.btnSelectExpectedOutput);
+            this.tabPageTest.Controls.Add(this.btnTest);
+            this.tabPageTest.Controls.Add(this.btnSelectTestDataFile);
+            this.tabPageTest.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTest.Name = "tabPageTest";
+            this.tabPageTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTest.Size = new System.Drawing.Size(563, 109);
+            this.tabPageTest.TabIndex = 1;
+            this.tabPageTest.Text = "Level1-Tests";
+            this.tabPageTest.UseVisualStyleBackColor = true;
             // 
-            // btnSelectTestDataFile
+            // lblResult
             // 
-            this.btnSelectTestDataFile.Location = new System.Drawing.Point(359, 16);
-            this.btnSelectTestDataFile.Name = "btnSelectTestDataFile";
-            this.btnSelectTestDataFile.Size = new System.Drawing.Size(132, 23);
-            this.btnSelectTestDataFile.TabIndex = 0;
-            this.btnSelectTestDataFile.Text = "Select Test Data File";
-            this.btnSelectTestDataFile.UseVisualStyleBackColor = true;
-            this.btnSelectTestDataFile.Click += new System.EventHandler(this.btnSelectTestDataFile_Click);
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(190, 81);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 13);
+            this.lblResult.TabIndex = 5;
             // 
-            // btnTest
+            // txbExpectedOutputPath
             // 
-            this.btnTest.Location = new System.Drawing.Point(98, 76);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 1;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.txbExpectedOutputPath.Enabled = false;
+            this.txbExpectedOutputPath.Location = new System.Drawing.Point(6, 44);
+            this.txbExpectedOutputPath.Name = "txbExpectedOutputPath";
+            this.txbExpectedOutputPath.Size = new System.Drawing.Size(347, 20);
+            this.txbExpectedOutputPath.TabIndex = 4;
+            // 
+            // txbTestDataFilePath
+            // 
+            this.txbTestDataFilePath.Enabled = false;
+            this.txbTestDataFilePath.Location = new System.Drawing.Point(6, 18);
+            this.txbTestDataFilePath.Name = "txbTestDataFilePath";
+            this.txbTestDataFilePath.Size = new System.Drawing.Size(347, 20);
+            this.txbTestDataFilePath.TabIndex = 3;
             // 
             // btnSelectExpectedOutput
             // 
@@ -142,44 +148,61 @@
             this.btnSelectExpectedOutput.UseVisualStyleBackColor = true;
             this.btnSelectExpectedOutput.Click += new System.EventHandler(this.btnSelectExpectedOutput_Click);
             // 
-            // txbTestDataFilePath
+            // btnTest
             // 
-            this.txbTestDataFilePath.Enabled = false;
-            this.txbTestDataFilePath.Location = new System.Drawing.Point(6, 18);
-            this.txbTestDataFilePath.Name = "txbTestDataFilePath";
-            this.txbTestDataFilePath.Size = new System.Drawing.Size(347, 20);
-            this.txbTestDataFilePath.TabIndex = 3;
+            this.btnTest.Location = new System.Drawing.Point(98, 76);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 1;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // txbExpectedOutputPath
+            // btnSelectTestDataFile
             // 
-            this.txbExpectedOutputPath.Enabled = false;
-            this.txbExpectedOutputPath.Location = new System.Drawing.Point(8, 44);
-            this.txbExpectedOutputPath.Name = "txbExpectedOutputPath";
-            this.txbExpectedOutputPath.Size = new System.Drawing.Size(345, 20);
-            this.txbExpectedOutputPath.TabIndex = 4;
+            this.btnSelectTestDataFile.Location = new System.Drawing.Point(359, 16);
+            this.btnSelectTestDataFile.Name = "btnSelectTestDataFile";
+            this.btnSelectTestDataFile.Size = new System.Drawing.Size(132, 23);
+            this.btnSelectTestDataFile.TabIndex = 0;
+            this.btnSelectTestDataFile.Text = "Select Test Data File";
+            this.btnSelectTestDataFile.UseVisualStyleBackColor = true;
+            this.btnSelectTestDataFile.Click += new System.EventHandler(this.btnSelectTestDataFile_Click);
             // 
-            // lblResult
+            // cbbLevelSelection
             // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(190, 81);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 13);
-            this.lblResult.TabIndex = 5;
+            this.cbbLevelSelection.FormattingEnabled = true;
+            this.cbbLevelSelection.Location = new System.Drawing.Point(103, 4);
+            this.cbbLevelSelection.Name = "cbbLevelSelection";
+            this.cbbLevelSelection.Size = new System.Drawing.Size(121, 21);
+            this.cbbLevelSelection.TabIndex = 5;
+            this.cbbLevelSelection.SelectedIndexChanged += new System.EventHandler(this.cbbLevelSelection_SelectedIndexChanged);
+            // 
+            // lblSelectLevel
+            // 
+            this.lblSelectLevel.AutoSize = true;
+            this.lblSelectLevel.Location = new System.Drawing.Point(12, 9);
+            this.lblSelectLevel.Name = "lblSelectLevel";
+            this.lblSelectLevel.Size = new System.Drawing.Size(86, 13);
+            this.lblSelectLevel.TabIndex = 6;
+            this.lblSelectLevel.Text = "Select the level: ";
             // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 147);
-            this.Controls.Add(this.tabLevel1);
+            this.ClientSize = new System.Drawing.Size(567, 168);
+            this.Controls.Add(this.lblSelectLevel);
+            this.Controls.Add(this.cbbLevelSelection);
+            this.Controls.Add(this.tabLevelResolution);
             this.Name = "Start";
             this.Text = "Backend Solution";
-            this.tabLevel1.ResumeLayout(false);
-            this.tabPageLevel1.ResumeLayout(false);
-            this.tabPageLevel1.PerformLayout();
-            this.tabPageLevel1Test.ResumeLayout(false);
-            this.tabPageLevel1Test.PerformLayout();
+            this.tabLevelResolution.ResumeLayout(false);
+            this.tabPageResolution.ResumeLayout(false);
+            this.tabPageResolution.PerformLayout();
+            this.tabPageTest.ResumeLayout(false);
+            this.tabPageTest.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,14 +210,16 @@
         private System.Windows.Forms.TextBox txbInputFilePath;
         private System.Windows.Forms.Button btnSelectInputFile;
         private System.Windows.Forms.Button btnGenerateOutput;
-        private System.Windows.Forms.TabControl tabLevel1;
-        private System.Windows.Forms.TabPage tabPageLevel1;
-        private System.Windows.Forms.TabPage tabPageLevel1Test;
+        private System.Windows.Forms.TabControl tabLevelResolution;
+        private System.Windows.Forms.TabPage tabPageResolution;
+        private System.Windows.Forms.TabPage tabPageTest;
         private System.Windows.Forms.TextBox txbExpectedOutputPath;
         private System.Windows.Forms.TextBox txbTestDataFilePath;
         private System.Windows.Forms.Button btnSelectExpectedOutput;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnSelectTestDataFile;
         private System.Windows.Forms.Label lblResult;
-    }
+        private System.Windows.Forms.ComboBox cbbLevelSelection;
+        private System.Windows.Forms.Label lblSelectLevel;
+    }    
 }

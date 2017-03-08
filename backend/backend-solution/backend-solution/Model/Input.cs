@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using backend_solution.Model;
-using Newtonsoft.Json;
 
 namespace backend_solution.Model
 {
-    public class Input
+    public abstract class Input
     {
         public List<Article> articles { get; set; }
-        public List<InputCart> carts { get; set; }
-
-        public static Input ReadJsonFile(string filePath)
-        {            
-            return JsonConvert.DeserializeObject<Input>(File.ReadAllText(filePath));
-        }
+        public List<InputCart> carts { get; set; }     
 
         public int FindArticlePrice(int article_id)
         {
