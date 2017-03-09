@@ -12,6 +12,11 @@ namespace backend_solution.Model.level2
     {
         public List<DeliveryFee> delivery_fees { get; set; }
 
+        public Level2Input()
+        {
+            delivery_fees = new List<DeliveryFee>();
+        }
+
         public static Level2Input ReadJsonFile(string filePath)
         {
             return JsonConvert.DeserializeObject<Level2Input>(File.ReadAllText(filePath));

@@ -12,12 +12,14 @@ using backend_solution.Model;
 using Newtonsoft.Json;
 using backend_solution.Model.level1;
 using backend_solution.Model.level2;
+using backend_solution.Model.level3;
 
 namespace backend_solution
 {
     public partial class Start : Form
     {
         #region Start
+        //Created a simple windows form application for execution of the code and testing of it.
         public Start()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace backend_solution
         {
             cbbLevelSelection.Items.Insert(0, "Level1");
             cbbLevelSelection.Items.Insert(1, "Level2");
+            cbbLevelSelection.Items.Insert(2, "Level3");
             cbbLevelSelection.SelectedIndex = 0;
         }
         #endregion
@@ -47,8 +50,8 @@ namespace backend_solution
                 return;
             }            
 
-            Output output = ObtainOutput(txbInputFilePath.Text);       
-            
+            Output output = Output.ObtainOutput(txbInputFilePath.Text, cbbLevelSelection.SelectedIndex);            
+                        
             string outputText = JsonConvert.SerializeObject(output);
 
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -72,7 +75,12 @@ namespace backend_solution
         #endregion
 
         #region Testing
-
+        /*
+         * Decided to use files as a way of testing because it would be possible to generate a
+         * more complete file with others test cases.
+         * Created a few files for testing and they're
+         * on the "Test" folder inside the project folder.
+         */
         private void btnSelectTestDataFile_Click(object sender, EventArgs e)
         {
             txbTestDataFilePath.Text = SelectFile();
@@ -91,7 +99,7 @@ namespace backend_solution
                 return;
             }
                      
-            Output actualOutput = ObtainOutput(txbTestDataFilePath.Text);             
+            Output actualOutput = Output.ObtainOutput(txbTestDataFilePath.Text, cbbLevelSelection.SelectedIndex);             
             Output expectedOutput = Output.ReadJsonFile(txbExpectedOutputPath.Text);
             
             if (actualOutput.Compare(expectedOutput))
@@ -106,11 +114,12 @@ namespace backend_solution
             }                        
         }
 
-        #endregion       
+        #endregion        
 
         private string SelectFile()
         {
             string path = "";
+            lblResult.Text = string.Empty;
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "JSON files (*.json)|*.json";
             dialog.Title = "Select a JSON file";
@@ -135,26 +144,14 @@ namespace backend_solution
                     tabPageResolution.Text = "Level2-Resolution";
                     tabPageTest.Text = "Level2-Test";
                     break;
-            }
-        }
-
-        private Output ObtainOutput(string filePath)
-        {
-            int levelSelected = cbbLevelSelection.SelectedIndex;
-            Output output = new Output();
-
-            switch (levelSelected)
-            {
-                case 0:
-                    Level1Input level1Input = Level1Input.ReadJsonFile(filePath);
-                    output = new Output(level1Input);
+                case 2:
+                    tabPageResolution.Text = "Level3-Resolution";
+                    tabPageTest.Text = "Level3-Test";
                     break;
-                case 1:
-                    Level2Input level2Input = Level2Input.ReadJsonFile(filePath);
-                    output = new Output(level2Input);
-                    break;                                    
             }
-            return output;
+            lblResult.Text = string.Empty;
         }
+
+        
     }
 }

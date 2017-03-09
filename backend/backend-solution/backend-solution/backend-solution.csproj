@@ -48,12 +48,14 @@
   <ItemGroup>
     <Compile Include="Model\Article.cs" />
     <Compile Include="Model\DeliveryFee.cs" />
+    <Compile Include="Model\Discount.cs" />
     <Compile Include="Model\EligibleTransactionVolume.cs" />
     <Compile Include="Model\InputCart.cs" />
     <Compile Include="Model\Input.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\level1\Level1Input.cs" />
     <Compile Include="Model\level2\Level2Input.cs" />
+    <Compile Include="Model\level3\Level3Input.cs" />
     <Compile Include="Model\Output.cs" />
     <Compile Include="Model\OutputCart.cs" />
     <Compile Include="Program.cs" />
